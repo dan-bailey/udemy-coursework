@@ -31,16 +31,12 @@ function updateScores(player, opponent) {
     }
 }
 
-function resetState() {
-    p1.score = 0;
-    p2.score = 0;
-    p1.display.textContent = p1.score;
-    p2.display.textContent = p2.score;
+function resetState(whichPlayer) {
+    whichPlayer.score = 0;
+    whichPlayer.display.textContent = p1.score;
+    whichPlayer.display.classList.remove('winner', 'loser');
+    whichPlayer.button.disabled = false;
     isGameOver = false;
-    p1.display.classList.remove('winner', 'loser');
-    p2.display.classList.remove('winner', 'loser');
-    p1.button.disabled = false;
-    p2.button.disabled = false;
 }
 
 
@@ -55,8 +51,12 @@ p2.button.addEventListener('click', function(e) {
 
 winningScoreSelect.addEventListener('change', function() {
     winningScore = parseInt(this.value);
-    resetState();
+    resetState(p1);
+    resetState(p2);
 })
 
 
-reset.addEventListener('click', resetState);
+reset.addEventListener('click', function(e) {
+    resetState(p1);
+    resetState(p2)
+});
