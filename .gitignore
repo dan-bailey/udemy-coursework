@@ -1,0 +1,5 @@
+# macOS cruft in all its forms
+.DS_Store
+
+# node shit
+node_modules
